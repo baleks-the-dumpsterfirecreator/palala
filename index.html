@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Image Fade & WAV Audio with Spacebar or Click</title>
+<style>
+  html, body {
+    margin: 0; height: 100%; background: red; overflow: hidden;
+    display: flex; justify-content: center; align-items: center;
+    flex-direction: column;
+    color: white; font-family: Arial, sans-serif;
+    user-select: none;
+  }
+  .fade-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transition: opacity 2s ease;
+    opacity: 1;
+  }
+  #image2 {
+    opacity: 0;
+  }
+
+  #message {
+    position: relative;
+    z-index: 10;
+    font-size: 1.5rem;
+    background: rgba(30, 144, 255, 0.8);
+    padding: 1em 2em;
+    border-radius: 8px;
+    transition: opacity 2s ease;
+    cursor: pointer; /* show clickable cursor */
+  }
+</style>
+</head>
+<body>
+
+<img id="image1" class="fade-image" src="FlagSlovenia.png" alt="Image 1" />
+<img id="image2" class="fade-image" src="flalg.png" alt="Image 2" />
+
+<div id="message" tabindex="0" role="button" aria-pressed="false">Press <strong>Spacebar</strong> or Click Here to play</div>
+
+<audio id="audio-player" src="victory_speech.wav" preload="auto"></audio>
+
+<script>
+  const audio = document.getElementById('audio-player');
+  const image1 = document.getElementById('image1');
+  const image2 = document.getElementById('image2');
+  const message = document.getElementById('message');
+  let started = false;
+
+  function startSequence() {
+    if (started) return;
+    started = true;
+    audio.play().then(() => {
+      message.style.opacity = '0';
+      setTimeout(() => {
+        image1.style.opacity = '0';
+        image2.style.opacity = '1';
+      }, 6000);
+    }).catch(err => {
+      console.log('Audio play error:', err);
+      started = false; // allow retry on error
+    });
+  }
+
+  // spacebar triggers startSequence
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      e.preventDefault();
+      startSequence();
+    }
+  });
+
+  // clicking the message div triggers startSequence
+  message.addEventListener('click', () => {
+    startSequence();
+  });
+
+  // Optional: Enter or Space key on message div triggers startSequence (for accessibility)
+  message.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      e.preventDefault();
+      startSequence();
+    }
+  });
+</script>
+
+</body>
+</html>
