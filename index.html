@@ -143,7 +143,7 @@
         map.getContainer().style.cursor = 'crosshair';
       } else {
         status.textContent = rect ? 'Area selected' : 'Selection cancelled';
-        selectBtn.textContent = 'Select area';
+        selectBtn.textContent = 'select';
         map.getContainer().style.cursor = '';
       }
     });
@@ -154,7 +154,7 @@
       if(marker){ map.removeLayer(marker); marker = null; }
       cornerA = null;
       selecting = false;
-      selectBtn.textContent = 'Select area';
+      selectBtn.textContent = 'select';
       animateBtn.disabled = true;
       status.textContent = 'Selection cleared';
       map.getContainer().style.cursor = '';
@@ -204,7 +204,7 @@
       rect = L.rectangle(bounds, {color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#ff3e00', weight:2, dashArray:'6 6'}).addTo(map);
       selecting = false;
       cornerA = null;
-      selectBtn.textContent = 'Select area';
+      selectBtn.textContent = 'select';
       animateBtn.disabled = false;
       status.textContent = `Area selected — SW: ${bounds.getSouthWest().lat.toFixed(3)}, ${bounds.getSouthWest().lng.toFixed(3)} — NE: ${bounds.getNorthEast().lat.toFixed(3)}, ${bounds.getNorthEast().lng.toFixed(3)}`;
     }
@@ -240,7 +240,7 @@
         map.removeLayer(dragRect);
         dragRect = null;
         selecting = false;
-        selectBtn.textContent = 'Select area';
+        selectBtn.textContent = 'select';
         animateBtn.disabled = false;
         status.textContent = `Area selected — SW: ${bounds.getSouthWest().lat.toFixed(3)}, ${bounds.getSouthWest().lng.toFixed(3)} — NE: ${bounds.getNorthEast().lat.toFixed(3)}, ${bounds.getNorthEast().lng.toFixed(3)}`;
       }
@@ -364,7 +364,7 @@
       if(e.key === 'Escape'){
         selecting = false;
         cornerA = null;
-        selectBtn.textContent = 'Select area';
+        selectBtn.textContent = 'select';
         status.textContent = rect ? 'Area selected' : 'Idle';
         cancelAnimation();
       }
@@ -390,7 +390,7 @@
     });
 
     // initial hint
-    status.textContent = 'Click "Select area" then click map twice or drag to set rectangle';
+    status.textContent = 'Click "select" then click map twice or drag to set rectangle';
 
   </script>
 </body>
