@@ -262,7 +262,7 @@
       if(anim.raf) cancelAnimationFrame(anim.raf);
       anim.raf = null;
       animateBtn.disabled = false;
-      animateBtn.textContent = 'Animate pointer';
+      animateBtn.textContent = 'start gambaling';
     }
 
     async function startAnimation(){
@@ -335,7 +335,7 @@
       // show final coordinates in status and re-enable UI
       status.textContent = `Landing point: ${final[0].toFixed(5)}, ${final[1].toFixed(5)}`;
       animateBtn.disabled = false;
-      animateBtn.textContent = 'Animate pointer';
+      animateBtn.textContent = 'start gambaling';
     }
 
     // Bounce animation: vertical lat offsets with diminishing amplitude
