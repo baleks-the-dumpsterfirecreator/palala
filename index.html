@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Map Pointer Animator — Lasso Selection</title>
+  <title>walk gambaling</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   <style>
@@ -56,10 +56,10 @@
 </head>
 <body>
   <div class="topbar">
-    <button id="selectBtn" class="btn">Lasso Select</button>
-    <button id="animateBtn" class="btn primary" disabled>Animate Pointer</button>
-    <button id="resetBtn" class="btn warn">Reset</button>
-    <div id="status" class="info" style="margin-left:auto;font-size:13px;color:var(--muted)">Click "Lasso Select" then drag to draw a freeform area</div>
+    <button id="selectBtn" class="btn">select</button>
+    <button id="animateBtn" class="btn primary" disabled>start gambaling</button>
+    <button id="resetBtn" class="btn warn">reset</button>
+    <div id="status" class="info" style="margin-left:auto;font-size:13px;color:var(--muted)">Click "select" then drag to draw a freeform area</div>
   </div>
   <div id="map"></div>
   <div class="instructions">Hold and drag to draw a freeform polygon. Release to finalize, then click Animate.</div>
@@ -212,7 +212,7 @@
       anim.running = false;
       marker.setLatLng(final);
       animateBtn.disabled = false;
-      animateBtn.textContent = 'Animate Pointer';
+      animateBtn.textContent = 'start gambaling';
     }
 
     function createPointerIcon(size=36){
